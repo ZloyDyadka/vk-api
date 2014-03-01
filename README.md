@@ -6,39 +6,32 @@ Feel free to use it.
 If you have any wishes, you can post it there on GitHub
 
 ## Getting Started
-Install the module with: `npm install vk-api`
+Install the module
 
 ```javascript
 var vk_api = require('vk-api');
-var VK = new vk_api({appID: APPID, appSecret: APPSECRET}, REDIRECT_URL);
-VK.api('users.get', {id: 1234, lang: 'en'}, function(err,result) {
-    //Some processing
-});
+var vk = new vk_api({appID: APPID, appSecret: APPSECRET});
+    vk.api('users.get', {
+        user_ids: id
+    }, function(err,result) {
+    });
 ```
 
 =======
 
-Or if you want to take User id
+Server method
 
 ```javascript
 var vk_api = require('vk-api');
-var VK = new vk_api({appID: APPID, appSecret: APPSECRET}, REDIRECT_URL);
-VK.init(function(err) {
-    VK.api('users.get', {id: VK.userId, lang: 'en'}, function(err,result) {
-        //Some processing
-    });
-});
+var vk = new vk_api({appID: APPID, appSecret: APPSECRET});
+
+    vk.api('secure.checkToken',{
+        token: userToken,
+        ip:    userIP
+    }, function(err, result) {
+    })
+})
 ```
 
-## Documentation
-_(Coming soon)_
-
-## Examples
-See examples directory
-
 ## Release History
-0.1.0 - 10/30/2013
-
-## License
-Copyright (c) 2013 Andromant  
-Licensed under the MIT license.
+0.1.1 - 03/02/2014
